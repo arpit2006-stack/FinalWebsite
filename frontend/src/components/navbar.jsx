@@ -14,7 +14,7 @@ const Navbar = () => {
       <nav className="bg-white p-4 shadow-md">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            <div className="text-gray-900 text-2xl font-bold">Zenith</div>
+            <div className="text-gray-900 text-2xl font-bold">WE-PICK</div>
 
             <form onSubmit={handleSearch} className="hidden sm:flex items-center space-x-2">
               <input
