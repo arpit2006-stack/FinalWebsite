@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "../lib/axios";
+
 
 const AuthForm = () => {
   const [isSignUp, setIsSignUp] = useState(true);
@@ -13,10 +15,26 @@ const AuthForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage(isSignUp ? "Sign-up successful!" : "Login successful!");
+    try {
+      const response = await axios.post("/api/auth/signup", {
+        fullName: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      alert(response.data.message);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      alert(error.response.data.message);
+    }
   };
+
+   
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-300 to-purple-400">
@@ -73,4 +91,6 @@ const AuthForm = () => {
   );
 };
 
+
 export default AuthForm;
+  
