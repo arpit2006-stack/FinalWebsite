@@ -89,6 +89,8 @@ export const login = async (req, res, next) => {
       message: `Welcome Back ${user.fullName}`,
       fullName: user.fullName,
       email: user.email,
+      id:user._id,
+      role:user.role
     });
   } catch (error) {
     next(error);
